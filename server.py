@@ -18,10 +18,13 @@ WIP_webservers_names=[]
 def send(c,msg):
 	c.send(bytes(str(msg),'utf-8'))
 
-def recive(c):
-	data=c.recv(1024)
-	data=data.decode('utf-8')
-	return data
+def recive(c,a):
+	try:
+		data=c.recv(1024)
+		data=data.decode('utf-8')
+		return data
+	except:
+		print("Connection: "+a[0]+" : "+a[1]+" disconnected")
 
 def handler(c,a):
   pass
@@ -33,7 +36,36 @@ def command():
 	pass
 
 def connectin_checker(c):
-	pass
+	send(c,"type?")
+	ans=recive(c,a)
+	if ans=="Clinet":
+		send(c,"Setted up?")
+		ans=recive(c,a)
+		if ans=="yes":
+			send(c,"list num?")
+			ans=recive(c,a)
+			line_num=0
+			password=""
+			username=""
+			with open("./Main server data/usernames.txt") as f:
+				for line in f:
+					if line_num==ans:
+						username+=line
+						break
+					else:
+						line_num+=1
+			line_num=0
+			with open("./Main server data/passwords.txt") as f:
+				for line in f:
+					if line_num==ans:
+						password+=line
+						break
+					else:
+						line_num+=1
+			while True:
+				
+	elif ans=="Web server":
+		pass
 
 def admin():
 	pass
