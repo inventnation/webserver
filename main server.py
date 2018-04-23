@@ -16,7 +16,7 @@ def send(c,msg):
   c.send(bytes(str(msg),'utf-8'))
 
 def recive(c):
-  data=c.recive(1024)
+  data=c.recv(1024)
   data=data.decode('utf-8')
   return data
 
