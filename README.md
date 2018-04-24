@@ -1,1 +1,1 @@
-# This thing is a server to client chat server with a twist it has a thing called a webserver and it acts like a website but it can do more things.
+# This thing is a server to client chat server with a twist it has a thing called a webserver and it acts like a website but it can do more things.And the only way you can talk to other people is to connect to a chatroom so on the main screen the oly thing the server will do is accept commands.
