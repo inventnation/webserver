@@ -9,6 +9,7 @@ chatroom=0
 chatroom_name=""
 username=""
 file_size=0
+file_name=""
 global file_transfer
 file_transfer=0
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -193,6 +194,8 @@ while True:
       data_size=s.recv(1024)
       data_size=data_size.decode('utf-8')
       file_size+=int(data_size)
+      file_names=s.recv(1024)
+      file_name=file_names.decode("urf-8")
     elif holder=="chatroom?":
       if chatroom==1:
         s.send(bytes("yes","utf-8"))
@@ -208,5 +211,6 @@ while True:
     while True:
       if "SERVER: FILE: "in data[0:14]:
         print("SDGHDFHYTFG")
+        
   else:
     print(str(data))
