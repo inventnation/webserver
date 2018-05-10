@@ -207,10 +207,22 @@ while True:
       s.send(bytes(str(username),"utf-8"))
   elif file_transfer==1:
     print("the file size is "+str(file_size)+" Bytes so do you want to download it (y/n)")
-    
     while True:
-      if "SERVER: FILE: "in data[0:14]:
-        print("SDGHDFHYTFG")
-        
+      ans=input("Y or N: ")
+      if ans=="Y"or ans=="y":
+				file=open(str(file_name),"a")
+        while True:
+          if "SERVER: FILE: "in data[0:14]:
+            data2=data[14:]
+            if data2=="done":
+							file.close()
+              break
+            else:
+							file.write(str(data2))
+         else:
+          pass
+       break
+      elif ans=="N"or ans=="n":
+      	break
   else:
     print(str(data))
